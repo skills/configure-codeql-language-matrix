@@ -6,26 +6,50 @@ _Configure your CodeQL workflows with a language matrix to simplify your code sc
 
 </header>
 
-## Welcome
+## Step 1: Add a language matrix to your CodeQL workflow file
 
-In this course we will explore how you can configure CodeQL using configuration files. During this course, we will show you how to add a query pack to a CodeQL configuration file as well as configure your workflow to reference that configuration file.
+_Welcome to "Configuring a CodeQL language matrix"! :wave:_
 
-- **Who is this for**: Developers, security engineers, open source maintainers.
-- **What you'll learn**: We'll show you how to configure your workflow to use a language matrix. We will also cover the autobuild action for compiled langauges. This will allow you to have a single code scanning workflow that covers all the languages in your repository.
-- **What you'll build**: A secure software development pipeline that has been tuned to your project's specific needs.
-- **Prerequisites**: Knowledge of how the Context and expressions work in workflows. You can learn more about this in the [GitHub Actions documentation](https://docs.github.com/en/actions).
-- **How long**: This course is 2 steps long and takes less than 30 minutes to complete.
+## CodeQL language matrices
 
-## How to start this course
+CodeQL language matrices allow you to configure your CodeQL workflows with a language matrix to simplify your code scanning workflows. This allows you to have a single code scanning workflow that covers all the languages in your repository.
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=configure-codeql-language-matrix&owner=%40me&name=skills-configure-codeql-language-matrix&description=GitHub+Skills:+Configure+Codeql+Language+Matrix&visibility=public)
+### Importance of using languages matrices with code scanning
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-    - For owner, choose your personal account or an organization to host the repository.
-    - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-    - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+1. **Simplicity**: Using a language matrix with CodeQL simplifies your workflow by allowing you to manage multiple languages in a single workflow file. This eliminates the need for separate workflows for each language, making your code scanning process more streamlined and manageable.
+2. **Flexibility**: A language matrix provides flexibility as it allows you to easily add or remove languages from your workflow. This means you can quickly adapt your code scanning process to changes in your project's language usage.
+3. **Consistency**: By using a language matrix, you ensure consistent code scanning across all languages used in your project. This helps maintain the quality and security of your codebase, regardless of the language it's written in.
+
+Remember, a well-configured CodeQL setup is key to maintaining a secure and reliable codebase.
+
+### :keyboard: Activity: Configure your `codeql.yml` file to use a language matrix
+
+1. Navigate to the `Code` tab and locate the `.github/workflows` folder.
+1. Add the following content to the `codeql.yml` file before the steps section:
+    ```yaml
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'go', 'java-kotlin', 'javascript-typescript', 'python' ]
+        # CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
+        # Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
+        # Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+
+    ```
+1. Ensure that your indentation is correct after adding the strategy section.
+1. Now that you have added the strategy, you need to update CodeQL to actually use the language matrix. Add the following to the CodeQL init action:
+    ```yaml
+      with:
+        languages: ${{ matrix.language }}
+    ```
+1. Finally we need to add the language matrix to the CodeQL analyze action. Add the following to the CodeQL analyze action:
+    ```yaml
+      with:
+        category: ${{ matrix.language }}
+    ```
+1. Commit the changes directly to the `main` branch.
+1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
 <footer>
 
