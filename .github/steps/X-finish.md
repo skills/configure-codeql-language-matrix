@@ -7,7 +7,7 @@ _Congratulations friend, you've completed this course!_
 Here's a recap of all the tasks you've accomplished in your repository:
 
 -   You've learned how to use a language matrix with CodeQL workflows.
--   You've learned how about the CodeQL autobuild action works.
+-   You've learned about how the CodeQL autobuild action works.
 -   You've learned how to use contextual expressions.
 
 ### Additional learning and resources
