@@ -2,7 +2,7 @@
 
 _Nice work! :tada: You modified your workflow to use a language matrix!_
 
-With the language matrix specified we can see the languages that we want to scan. One of those languages is a compiled language, and as such will not work correctly with how we have the workflow set up. We need to make sure that the autobuild step is included _and_ only runs when it is needed.
+With the language matrix specified we can see the languages we want to scan. One of those languages is a compiled language, and as such, will not work correctly with how we have the workflow set up. We need to make sure the autobuild step is included _and_ only runs when it is needed.
 
 Autobuild for CodeQL is a feature that automatically attempts to build any compiled languages in your repository. It works by detecting the build system in your repository and executing the appropriate commands to compile the code, enabling CodeQL to analyze the compiled language.
 

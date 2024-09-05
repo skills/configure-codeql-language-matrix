@@ -8,12 +8,12 @@ _Configure your CodeQL workflows with a language matrix to simplify your code sc
 
 ## Welcome
 
-In this course we will explore how you can configure CodeQL using configuration files. During this course, we will show you how to add a query pack to a CodeQL configuration file as well as configure your workflow to reference that configuration file.
+In this course we will explore how you can configure CodeQL using configuration files. During this course, we will show you how to add a query pack to a CodeQL configuration file, as well as configure your workflow to reference that configuration file.
 
 - **Who is this for**: Developers, security engineers, open source maintainers.
-- **What you'll learn**: We'll show you how to configure your workflow to use a language matrix. We will also cover the autobuild action for compiled langauges. This will allow you to have a single code scanning workflow that covers all the languages in your repository.
+- **What you'll learn**: We'll show you how to configure your workflow to use a language matrix. We will also cover the autobuild action for compiled languages. This will allow you to have a single code scanning workflow that covers all the languages in your repository.
 - **What you'll build**: A secure software development pipeline that has been tuned to your project's specific needs.
-- **Prerequisites**: Knowledge of how the Context and expressions work in workflows. You can learn more about this in the [GitHub Actions documentation](https://docs.github.com/en/actions).
+- **Prerequisites**: Knowledge of how the context and expressions work in workflows. You can learn more about this in the [GitHub Actions documentation](https://docs.github.com/en/actions).
 - **How long**: This course is 2 steps long and takes less than 30 minutes to complete.
 
 ## How to start this course
