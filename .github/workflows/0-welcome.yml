@@ -5,18 +5,21 @@ name: Step 0, Welcome
 
 # This will run every time we create push a commit to `main`.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+
 on:
-  create:
-  workflow_dispatch:
+  workflow_dispatch:  
+  push:
+    branches:
+      - main           
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
-  # Need `contents: read` to checkout the repository.
+# Need `contents: read` to checkout the repository.
   # Need `contents: write` to update the step metadata.
   contents: write
 
 jobs:
-  # Get the current step to only run the main job when the learner is on the same step.
+# Get the current step to only run the main job when the learner is on the same step.
   get_current_step:
     name: Check current step number
     runs-on: ubuntu-latest
@@ -42,7 +45,7 @@ jobs:
       ${{ !github.event.repository.is_template
           && needs.get_current_step.outputs.current_step == 0 }}
 
-    # We'll run Ubuntu for performance instead of Mac or Windows.
+# We'll run Ubuntu for performance instead of Mac or Windows.
     runs-on: ubuntu-latest
 
     steps:
@@ -50,9 +53,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Let's get all the branches.
+          fetch-depth: 0 # Get all branches
 
-      # In README.md, switch step 0 for step 1.
+# In README.md, switch step 0 for step 1.
       - name: Update to step 1
         uses: skills/action-update-step@v2
         with:
